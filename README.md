@@ -1,7 +1,7 @@
-# CO2 Emission Prediction: A Multi-Model Machine Learning Benchmark
+# CO2 Emission Prediction: Multi Model Comparison
 
-This repository contains the code accompanying the paper **[paper title]**.  
-It provides a complete pipeline for benchmarking regression models on provincial CO2 emission data in China, covering data splitting, feature selection, cross-validated training, and bootstrap uncertainty estimation.
+This repository contains the code accompanying the paper **[Systematic overestimation and feature dependency in data-driven CO₂ emission prediction]**.  
+Machine learning has become a standard tool for simulating complex urban spatiotemporal phenomena, including the intricate dynamics of CO2 emissions. However, as the application of these data-driven tools expands, their relative effectiveness, structural biases, and uncertainty quantification across different algorithmic architectures remain critically under-researched. Here, we systematically evaluate 18 diverse machine learning algorithms using a comprehensive historical dataset of county-level city CO₂ emissions in China (2001–2020) to establish a comparative framework. Crucially, we identify a prevalent structural limitation: nearly all evaluated models exhibit a systematic tendency to overestimate the target variable across both spatial and temporal dimensions. Furthermore, by isolating the effects of feature dependency, and rigorously quantifying predictive uncertainty via non-parametric bootstrap resampling, we demonstrate that aggressive feature selection typically degrades model performance. Retaining original high-dimensional city features is essential for capturing true system dynamics. While tree-based ensembles demonstrate overwhelming advantages in point-estimation accuracy and uncertainty quantification, their pervasive positive prediction bias persists. Ultimately, our findings underscore an urgent need for the scientific community to shift focus from merely pursuing higher predictive accuracy to actively diagnosing and correcting structural model biases before these algorithms influence real-world climate interventions.
 
 ---
 
@@ -53,7 +53,7 @@ The dataset contains panel data for Chinese provinces/cities with the following 
 | Climate | `dew`, `temp`, `evap`, `wind`, `press`, `solar`, `precip`, `pm25` |
 | Socioeconomic | `pop`, `gdp`, `area_crop`, `area_forest`, `area_urban`, `val_ind`, `export`, `import`, `val_pri`, `val_sec`, `val_ter`, `inc_urban`, `inc_rural`, `pass_vol`, `cars` |
 | Energy | `coal_raw`, `coal_clean`, `briquettes`, `coke`, `gas_coke`, `oil_crude`, `gasoline`, `kerosene`, `diesel`, `oil_fuel`, `lpg`, `gas_ref`, `gas_nat`, `heat`, `elec` |
-| Target | `co2_ds` (CO2 emissions, downscaled) |
+| Target | `co2_ds` |
 
 ---
 
@@ -110,8 +110,7 @@ To **enable or disable a model**, comment/uncomment the corresponding entry in t
 | Linear | `linear`, `ridge`, `bayesianridge`, `sgd`, `huber`, `glm` |
 | Instance-based / Kernel | `knn`, `svr` |
 | Neural networks | `mlp`, `elm` |
-| Tree ensembles | `rf`, `gbdt`, `adaboost`, `bagging`, `histgb` |
-| Boosting libraries | `xgb` (XGBoost), `lgb` (LightGBM), `catboost` |
+| Tree ensembles | `rf`, `gbdt`, `adaboost`, `bagging`, `histgb`,  `xgb` (XGBoost), `lgb` (LightGBM), `catboost`  |
 
 Each model is tuned via 5-fold grid search over a predefined hyperparameter grid (see `src/models.py`).
 
@@ -147,17 +146,4 @@ For each model, the following CSV files are produced:
 
 If you use this code, please cite:
 
-```bibtex
-@article{your_paper,
-  title   = {[Paper Title]},
-  author  = {[Authors]},
-  journal = {[Journal]},
-  year    = {[Year]},
-}
-```
 
----
-
-## License
-
-[MIT / CC BY 4.0 / etc.]
