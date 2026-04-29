@@ -1,7 +1,7 @@
 # Data files (large CSVs are not tracked)
 data/raw/*.csv
 data/processed/*.csv
-data/predict_ds/
+data/predict/
 
 # Python artifacts
 __pycache__/

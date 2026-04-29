@@ -10,7 +10,7 @@ Pipeline
 4. Train each registered model with 5-fold cross-validated grid search.
 5. Evaluate on the test set and optionally run bootstrap uncertainty analysis.
 
-All results are written to ``data/predict_ds/``.
+All results are written to ``data/predict/``.
 """
 
 import os
@@ -30,8 +30,8 @@ def main():
     os.makedirs(config.OUTPUT_ROOT, exist_ok=True)
 
     for scale in config.SCALES:
-        train_csv = os.path.join(config.DATA_DIR, f"merged9_{scale}_train.csv")
-        test_csv  = os.path.join(config.DATA_DIR, f"merged9_{scale}_test.csv")
+        train_csv = os.path.join(config.DATA_DIR, f"merged_{scale}_train.csv")
+        test_csv  = os.path.join(config.DATA_DIR, f"merged_{scale}_test.csv")
 
         if not os.path.exists(train_csv) or not os.path.exists(test_csv):
             print(f"[SKIP] Files not found for scale='{scale}': {train_csv}")

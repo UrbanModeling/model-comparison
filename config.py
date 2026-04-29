@@ -8,16 +8,16 @@ import os
 
 # ── Paths ─────────────────────────────────────────────────────────────────────
 BASE_DIR    = os.path.dirname(os.path.abspath(__file__))
-RAW_DATA    = os.path.join(BASE_DIR, "data", "raw",       "merged9.5.csv")
+RAW_DATA    = os.path.join(BASE_DIR, "data", "raw",       "merged_data.csv")
 DATA_DIR    = os.path.join(BASE_DIR, "data", "processed")
-OUTPUT_ROOT = os.path.join(BASE_DIR, "data", "predict_ds")
+OUTPUT_ROOT = os.path.join(BASE_DIR, "data", "predict")
 
 # ── Data split scales ─────────────────────────────────────────────────────────
 # 's' = spatial split (80/20 by uid), 't' = temporal split (2001-2016 / 2017-2020)
 SCALES = ['t']
 
 # ── Target variable ───────────────────────────────────────────────────────────
-TARGET_COL = 'co2_ds'
+TARGET_COL = 'co2'
 
 # ── Feature selection ─────────────────────────────────────────────────────────
 # Options: 'mi' (mutual information), 'rf' (random forest), 'pearson', None
